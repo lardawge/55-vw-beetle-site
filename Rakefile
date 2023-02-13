@@ -77,6 +77,7 @@ task :build do
   backup_and_restore(BUILD_DIR, ".git") do
     cd PROJECT_ROOT do
       sh "bundle exec middleman build --clean"
+      sh "cp CNAME build/CNAME"
     end
   end
 end
