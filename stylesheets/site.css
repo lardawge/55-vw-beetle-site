@@ -5018,10 +5018,6 @@ progress {
   .d-print-none {
     display: none !important; } }
 
-body {
-  background-color: #000000;
-  color: #ffffff; }
-
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem; }
