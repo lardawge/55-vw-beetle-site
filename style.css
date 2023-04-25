@@ -5040,6 +5040,12 @@ hr {
   margin-top: 2rem;
   margin-bottom: 2rem; }
 
+.note {
+  font-size: .8em;
+  margin-top: 2em;
+  display: block;
+  color: crimson; }
+
 .img-fluid {
   margin-top: 1rem;
   margin-bottom: 1rem; }
