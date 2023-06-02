@@ -68,6 +68,8 @@ GEM
       toml
       uglifier (~> 3.0)
       webrick
+    middleman-meta-tags (0.7.0)
+      middleman-core (>= 3.0.0)
     minitest (5.17.0)
     padrino-helpers (0.15.2)
       i18n (>= 0.6.7, < 2)
@@ -101,6 +103,7 @@ PLATFORMS
 
 DEPENDENCIES
   middleman (~> 4.2)
+  middleman-meta-tags
   tzinfo-data
   wdm (~> 0.1)
 

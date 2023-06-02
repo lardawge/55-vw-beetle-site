@@ -11,6 +11,8 @@ activate :external_pipeline,
   source: ".tmp/dist",
   latency: 1
 
+activate :meta_tags
+
 configure :development do
   config[:css_dir] = ".tmp/dist"
   config[:js_dir] = ".tmp/dist"
