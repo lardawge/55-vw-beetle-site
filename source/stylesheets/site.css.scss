@@ -79,3 +79,7 @@ hr {
     object-fit: cover;
   }
 }
+
+.carousel.pointer-event {
+  touch-action: pan-y pinch-zoom;
+}
