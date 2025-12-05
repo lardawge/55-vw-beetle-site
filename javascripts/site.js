@@ -18,7 +18,7 @@ import Lightbox from './bs5-lightbox'
 const options = {
 	keyboard: true,
 	size: 'fullscreen',
-	constrain: false,
+	constrain: true,
 	ride: false
 };
 
