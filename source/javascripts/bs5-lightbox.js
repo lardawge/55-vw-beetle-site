@@ -116,7 +116,7 @@ class Lightbox {
 				if (regex.test(src)) {
 					src = src.replace(regex, '');
 				}
-				const imgClasses = this.settings.constrain ? 'mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0' : 'h-100 w-100';
+				const imgClasses = this.settings.constrain ? 'h-auto w-auto m-auto top-0 end-0 bottom-0 start-0' : 'h-100 w-100';
 				const params = new URLSearchParams(src.split('?')[1]);
 				let caption = '';
 				let url = src;
@@ -130,7 +130,7 @@ class Lightbox {
 					}
 					caption = `<p class="lightbox-caption m-0 p-2 text-center text-white small"><em>${params.get('caption')}</em></p>`;
 				}
-				let inner = `<img src="${url}" class="d-block ${imgClasses} img-fluid" style="z-index: 1; object-fit: contain;" />`;
+				let inner = `<img src="${url}" class="d-block ${imgClasses} img-fluid" style="z-index: 1; max-width:100vw; max-height:100vh; object-fit: contain;" />`;
 				let attributes = '';
 				const instagramEmbed = this.getInstagramEmbed(src);
 				const youtubeLink = this.getYoutubeLink(src);

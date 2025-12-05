@@ -83,3 +83,9 @@ hr {
 .carousel.pointer-event {
   touch-action: pan-y pinch-zoom;
 }
+
+.carousel-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
