@@ -229,7 +229,7 @@
       <div class="card rounded mb-5">
         <div class="card-body contact-form-wrapper position-relative">
             <div
-              id="contactThankYouOverlay"
+              id="successOverlay"
               class="position-absolute top-0 start-0 w-100 h-100
                     d-flex flex-column align-items-center justify-content-center
                     bg-dark bg-opacity-75 text-white text-center px-3 rounded-2 d-none"
@@ -317,7 +317,7 @@
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('contactSubmitBtn');
     const errorAlert = document.getElementById('contactError');
-    const thankYouOverlay = document.getElementById('thankYouOverlay');
+    const successOverlay = document.getElementById('successOverlay');
 
     if (!form) return;
 
@@ -367,8 +367,8 @@
         })
         .then(function (data) {
           // On success: show thank-you overlay and optionally reset form
-          if (thankYouOverlay) {
-            thankYouOverlay.classList.remove('d-none');
+          if (successOverlay) {
+            successOverlay.classList.remove('d-none');
           }
           form.reset();
           form.classList.remove('was-validated');
