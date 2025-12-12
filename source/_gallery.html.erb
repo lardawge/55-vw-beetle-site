@@ -2,8 +2,8 @@
   <% (1..96).each do |i| %>
   <div class="col-lg-2 col-md-3 col-6">
     <div class="img-thumb">
-      <a href="images/gallery/img-<%= i %>.jpeg" data-toggle="lightbox-c" data-gallery="example-gallery">
-        <img src="images/gallery/imgthumb-<%= i %>.jpeg" class="img-fluid">
+      <a href="<%= image_path('gallery/img-' + i.to_s + '.jpeg') %>" data-toggle="lightbox-c" data-gallery="example-gallery">
+        <img src="<%= image_path('gallery/imgthumb-' + i.to_s + '.jpeg') %>" class="img-fluid">
       </a>
     </div>
   </div>
