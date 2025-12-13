@@ -1,9 +1,9 @@
 <div class="row">
-  <% (1..122).each do |i| %>
+  <% (1..gallery_count).each do |i| %>
   <div class="col-lg-2 col-md-3 col-6">
     <div class="img-thumb">
-      <a href="<%= image_path('gallery/img-' + i.to_s + '.jpeg') %>" data-toggle="lightbox-c" data-gallery="example-gallery">
-        <img src="<%= image_path('gallery/imgthumb-' + i.to_s + '.jpeg') %>" class="img-fluid">
+      <a href="<%= image_path("#{gallery_path}/img-#{i}.jpeg") %>" data-toggle="lightbox-c" data-gallery="example-gallery">
+        <img src="<%= image_path("#{gallery_path}/imgthumb-#{i}.jpeg") %>" class="img-fluid">
       </a>
     </div>
   </div>

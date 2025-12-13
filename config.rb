@@ -53,11 +53,12 @@ end
 # Methods defined in the helpers block are available in templates
 # https://middlemanapp.com/basics/helper-methods/
 
-# helpers do
-#   def some_helper
-#     'Helping'
-#   end
-# end
+helpers do
+  def gallery_count
+    gallery_directory = "source/images/gallery"
+    Dir.entries(gallery_directory).select { |entry| File.file?(File.join(gallery_directory, entry)) }.count / 2
+  end
+end
 
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
