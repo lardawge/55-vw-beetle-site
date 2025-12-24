@@ -161,12 +161,18 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col">
-      <h4 class="mb-4">Included Parts</h4>
+    <div class="col" id="inventory">
+      <h4 class="mb-4">Complete Parts Inventory — included with the car</h4>
+      <p class="text-start">
+        <a href="https://docs.google.com/spreadsheets/d/1khXfphFv0TviubRPDe_W8o2wJPWmuhnJ3Mq1XAOFQfI/edit?usp=sharing" onclick="sa_event('inventory_section_reached')" target="_blank">
+          → Open full parts inventory (Google)
+        </a>
+      </p>
+
       <iframe width="100%" height="500px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQIwWjliMeRpyQgKq5BBPWsIj5KaBa817RgnqLN4k0Aj2rbVXv4vgO0ZAax40C3Pf1tE_97Y4Vy-kjI/pubhtml?widget=true&amp;headers=false"></iframe>
-      <p>
-        View directly here: <a href="https://docs.google.com/spreadsheets/d/1khXfphFv0TviubRPDe_W8o2wJPWmuhnJ3Mq1XAOFQfI/edit?usp=sharing">Parts Inventory</a><br>
-        As you can see, all the hard to find parts are included with the car. I have completed restoration on a handful of parts including the original hardware and vent wings. <br>
+      <p class="text-start">
+        As you can see, all the hard to find parts are included with the car. <br>
+        I have completed restoration on a handful of parts including the original hardware and vent wings. <br>
         The hardware is bagged and tagged for each part it belongs to.
       </p>
     </div>
@@ -313,6 +319,22 @@
   defer>
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  let interacted = false;
+
+  form.addEventListener('focusin', function () {
+    if (!interacted) {
+      sa_event('contact_form_interacted');
+      interacted = true;
+    }
+  });
+});
+</script>
+
 <!-- Bootstrap client-side validation script -->
 <script>
   (function () {
@@ -367,6 +389,7 @@
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
+          sa_event('contact_form_submitted');
           return response.json();
         })
         .then(function (data) {
@@ -404,6 +427,23 @@
         });
     }, false);
   })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const inventorySection = document.getElementById('inventory');
+
+  if (!inventorySection) return;
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      sa_event('inventory_section_viewed');
+      observer.disconnect();
+    }
+  }, { threshold: 0.5 });
+
+  observer.observe(inventorySection);
+});
 </script>
 
 <!-- 100% privacy-first analytics -->
