@@ -1,5 +1,5 @@
 // This is where it all goes :)
-import '../stylesheets/site-69319b16.css.scss'
+import '../stylesheets/site-3eb602b2.css.scss'
 // import 'bootstrap/js/dist/alert';
 // import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/carousel';
@@ -32,6 +32,27 @@ document.querySelectorAll('[data-toggle="lightbox-c"]').forEach((el) => el.addEv
 	const lightbox = new Lightbox(el, options);
 	lightbox.show();
 }));
+
+// Make magnifying glass icons trigger lightbox
+document.querySelectorAll('.magnify-icon').forEach((icon) => {
+	icon.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		// Find the parent link with lightbox trigger
+		const link = icon.closest('.img-thumb')?.querySelector('[data-toggle="lightbox-c"]');
+		if (link) {
+			if (window.sa_event) {
+				window.sa_event('lightbox_opened');
+			}
+			const lightbox = new Lightbox(link, options);
+			lightbox.show();
+		}
+	});
+
+	// Make icon appear clickable
+	icon.style.cursor = 'pointer';
+});
 
 // Smooth scrolling and analytics for navigation links
 document.addEventListener('DOMContentLoaded', function () {
