@@ -3,7 +3,7 @@ import '../stylesheets/site.css.scss'
 // import 'bootstrap/js/dist/alert';
 // import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/carousel';
-// import 'bootstrap/js/dist/collapse';
+import Collapse from 'bootstrap/js/dist/collapse';
 // import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/modal';
 // import 'bootstrap/js/dist/offcanvas';
@@ -32,3 +32,49 @@ document.querySelectorAll('[data-toggle="lightbox-c"]').forEach((el) => el.addEv
 	const lightbox = new Lightbox(el, options);
 	lightbox.show();
 }));
+
+// Smooth scrolling and analytics for navigation links
+document.addEventListener('DOMContentLoaded', function () {
+	const navLinks = document.querySelectorAll('.navbar .nav-link[href^="#"], .navbar-brand[href^="#"]');
+
+	navLinks.forEach((link) => {
+		link.addEventListener('click', function (e) {
+			const href = this.getAttribute('href');
+			if (!href || href === '#') return;
+
+			// Track analytics
+			const section = href.substring(1); // Remove the #
+			const eventName = `nav_${section}_clicked`;
+			if (window.sa_event) {
+				window.sa_event(eventName);
+			}
+
+			// Smooth scroll
+			const targetId = href.substring(1);
+			const targetElement = document.getElementById(targetId);
+
+			if (targetElement) {
+				e.preventDefault();
+
+				// Close mobile menu if open
+				const navbarCollapse = document.getElementById('navbarNav');
+				if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+					const bsCollapse = Collapse.getInstance(navbarCollapse) || new Collapse(navbarCollapse, {
+						toggle: false
+					});
+					bsCollapse.hide();
+				}
+
+				// Calculate offset for sticky navbar
+				const navbar = document.querySelector('.navbar');
+				const navbarHeight = navbar ? navbar.offsetHeight : 0;
+				const targetPosition = targetElement.offsetTop - navbarHeight;
+
+				window.scrollTo({
+					top: targetPosition,
+					behavior: 'smooth'
+				});
+			}
+		});
+	});
+});
