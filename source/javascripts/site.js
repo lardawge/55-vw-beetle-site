@@ -23,7 +23,12 @@ const options = {
 };
 
 document.querySelectorAll('[data-toggle="lightbox-c"]').forEach((el) => el.addEventListener('click', (e) => {
+	e.preventDefault();
+
+	if (window.sa_event) {
+		window.sa_event('lightbox_opened');
+	}
+
 	const lightbox = new Lightbox(el, options);
 	lightbox.show();
-	e.preventDefault();
 }));
